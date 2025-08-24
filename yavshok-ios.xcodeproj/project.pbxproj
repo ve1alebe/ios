@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -30,7 +30,18 @@
 		67F1FD1A2E10715D001FDF03 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F1FD192E10715D001FDF03 /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		218F816E2E5B1F350034D9B2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 67F1FD0C2E10715C001FDF03 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 67F1FD132E10715C001FDF03;
+			remoteInfo = "yavshok-ios";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		218F81682E5B1F350034D9B2 /* yavshok-iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "yavshok-iosUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		672D2F122E10760A004295B5 /* cat.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = cat.gif; sourceTree = "<group>"; };
 		672D2F142E1077BE004295B5 /* ConfettiView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfettiView.swift; sourceTree = "<group>"; };
 		672D2F152E1077BE004295B5 /* GIFView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GIFView.swift; sourceTree = "<group>"; };
@@ -55,7 +66,18 @@
 		67F1FD192E10715D001FDF03 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		218F81692E5B1F350034D9B2 /* yavshok-iosUITests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "yavshok-iosUITests"; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
+		218F81652E5B1F350034D9B2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		67F1FD112E10715C001FDF03 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -127,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				67F1FD162E10715D001FDF03 /* yavshok-ios */,
+				218F81692E5B1F350034D9B2 /* yavshok-iosUITests */,
 				67F1FD152E10715D001FDF03 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -135,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				67F1FD142E10715D001FDF03 /* yavshok-ios.app */,
+				218F81682E5B1F350034D9B2 /* yavshok-iosUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -153,6 +177,29 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		218F81672E5B1F350034D9B2 /* yavshok-iosUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 218F81722E5B1F350034D9B2 /* Build configuration list for PBXNativeTarget "yavshok-iosUITests" */;
+			buildPhases = (
+				218F81642E5B1F350034D9B2 /* Sources */,
+				218F81652E5B1F350034D9B2 /* Frameworks */,
+				218F81662E5B1F350034D9B2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				218F816F2E5B1F350034D9B2 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				218F81692E5B1F350034D9B2 /* yavshok-iosUITests */,
+			);
+			name = "yavshok-iosUITests";
+			packageProductDependencies = (
+			);
+			productName = "yavshok-iosUITests";
+			productReference = 218F81682E5B1F350034D9B2 /* yavshok-iosUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		67F1FD132E10715C001FDF03 /* yavshok-ios */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 67F1FD222E10715E001FDF03 /* Build configuration list for PBXNativeTarget "yavshok-ios" */;
@@ -179,9 +226,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1540;
+				LastSwiftUpdateCheck = 1640;
 				LastUpgradeCheck = 1540;
 				TargetAttributes = {
+					218F81672E5B1F350034D9B2 = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = 67F1FD132E10715C001FDF03;
+					};
 					67F1FD132E10715C001FDF03 = {
 						CreatedOnToolsVersion = 15.4;
 					};
@@ -203,11 +254,19 @@
 			projectRoot = "";
 			targets = (
 				67F1FD132E10715C001FDF03 /* yavshok-ios */,
+				218F81672E5B1F350034D9B2 /* yavshok-iosUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		218F81662E5B1F350034D9B2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		67F1FD122E10715C001FDF03 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -225,6 +284,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		218F81642E5B1F350034D9B2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		67F1FD102E10715C001FDF03 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -248,7 +314,49 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		218F816F2E5B1F350034D9B2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 67F1FD132E10715C001FDF03 /* yavshok-ios */;
+			targetProxy = 218F816E2E5B1F350034D9B2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		218F81702E5B1F350034D9B2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "myapp.yavshok-iosUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "yavshok-ios";
+			};
+			name = Debug;
+		};
+		218F81712E5B1F350034D9B2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "myapp.yavshok-iosUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "yavshok-ios";
+			};
+			name = Release;
+		};
 		67F1FD202E10715E001FDF03 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -435,6 +543,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		218F81722E5B1F350034D9B2 /* Build configuration list for PBXNativeTarget "yavshok-iosUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				218F81702E5B1F350034D9B2 /* Debug */,
+				218F81712E5B1F350034D9B2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		67F1FD0F2E10715C001FDF03 /* Build configuration list for PBXProject "yavshok-ios" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

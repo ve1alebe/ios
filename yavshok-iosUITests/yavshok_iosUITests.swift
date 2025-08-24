@@ -7,35 +7,214 @@
 
 import XCTest
 
-final class yavshok_iosUITests: XCTestCase {
-
+final class MainViewUITests: XCTestCase {
+    
+    lazy var app: XCUIApplication = XCUIApplication()
+    lazy var mainView: MainPage = MainPage(app: app)
+    
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    @MainActor
-    func testExample() throws {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
+        app = XCUIApplication()
         app.launch()
-
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        mainView = MainPage(app: app)
     }
 
-    @MainActor
-    func testLaunchPerformance() throws {
-        // This measures how long it takes to launch your application.
-        measure(metrics: [XCTApplicationLaunchMetric()]) {
-            XCUIApplication().launch()
-        }
+    func testCheckEmailShowsSuccessState() {
+        mainView
+            .assertOnPage()
+            .enterEmail("vea@gmail.com")
+            .tapCheckButton()
+            .assertSuccessState()
+    }
+
+    func testCheckEmailShowsFailureState() {
+        mainView
+            .assertOnPage()
+            .enterEmail("hdskjfhskdufhsdfhsjkdfh@gmail.com")
+            .tapCheckButton()
+            .assertFailureState()
+    }
+
+    func testNavigateToLogin() {
+        mainView
+            .assertOnPage()
+            .tapNavigationButton()
     }
 }
+
+final class EditProfileUITests: XCTestCase {
+    
+    lazy var app: XCUIApplication = XCUIApplication()
+    lazy var editProfilePage: EditProfilePage = EditProfilePage(app: app)
+    
+    override func setUpWithError() throws {
+        continueAfterFailure = false
+        app = XCUIApplication()
+        app.launch()
+        
+        MainPage(app: app).tapNavigationButton()
+        LoginPage(app: app)
+            .enterEmail("vea@gmail.com")
+            .enterPassword("123456")
+            .tapLoginButton()
+        
+        ProfilePage(app: app).tapEditProfile()
+        editProfilePage = EditProfilePage(app: app)
+    }
+
+    func testEditNameAndSave() {
+        editProfilePage
+            .assertOnPage()
+            .enterName("sdfndsfnsdflnk")
+            .tapSaveButton()
+        
+        ProfilePage(app: app).assertOnPage()
+    }
+
+    func testCancelEdit() {
+        editProfilePage
+            .assertOnPage()
+            .tapCancelButton()
+        
+        ProfilePage(app: app).assertOnPage()
+    }
+}
+
+
+final class LoginViewUITests: XCTestCase {
+    
+    lazy var app: XCUIApplication = XCUIApplication()
+    lazy var loginPage: LoginPage = LoginPage(app: app)
+    
+    override func setUpWithError() throws {
+        continueAfterFailure = false
+        app = XCUIApplication()
+        app.launch()
+        
+        MainPage(app: app).tapNavigationButton()
+        loginPage = LoginPage(app: app)
+    }
+
+    func testSuccessfulLogin() {
+        loginPage
+            .assertOnPage()
+            .enterEmail("vea@gmail.com")
+            .enterPassword("123456")
+            .tapLoginButton()
+        
+        ProfilePage(app: app).assertOnPage()
+    }
+
+    func testValidationError() {
+        loginPage
+            .assertOnPage()
+            .enterEmail("dsjfhjhsdfjk@gmail.com")
+            .enterPassword("random_password")
+            .tapLoginButton()
+            .assertValidationError()
+    }
+
+    func testBackNavigation() {
+        loginPage
+            .assertOnPage()
+            .tapBackButton()
+        
+        MainPage(app: app).assertOnPage()
+    }
+
+    func testOpenRegister() {
+        loginPage
+            .assertOnPage()
+            .tapRegisterButton()
+        
+        RegisterPage(app: app).assertOnPage()
+    }
+}
+
+final class ProfileViewUITests: XCTestCase {
+    
+    lazy var app: XCUIApplication = XCUIApplication()
+    lazy var profileView: ProfilePage = ProfilePage(app: app)
+    
+    override func setUpWithError() throws {
+        continueAfterFailure = false
+        app = XCUIApplication()
+        app.launch()
+        
+        MainPage(app: app).tapNavigationButton()
+        LoginPage(app: app)
+            .enterEmail("vea@gmail.com")
+            .enterPassword("123456")
+            .tapLoginButton()
+        
+        profileView = ProfilePage(app: app)
+    }
+
+    func testProfileElements() {
+        profileView
+            .assertOnPage()
+            .assertPhotosLoaded()
+    }
+
+    func testEditProfileButton() {
+        profileView
+            .assertOnPage()
+            .tapEditProfile()
+    }
+
+    func testLogout() {
+        profileView
+            .assertOnPage()
+            .tapLogout()
+        
+        MainPage(app: app).assertOnPage()
+    }
+}
+
+final class RegisterViewUITests: XCTestCase {
+    
+    var app: XCUIApplication!
+    lazy var registerView: RegisterPage = {
+        MainPage(app: app).tapNavigationButton()
+        LoginPage(app: app).tapRegisterButton()
+        return RegisterPage(app: app)
+    }()
+    
+    override func setUpWithError() throws {
+        continueAfterFailure = false
+        app = XCUIApplication()
+        app.launch()
+    }
+    
+    func testSuccessfulRegistration() {
+            let randomEmail = "createme\(Int.random(in: 1000...9999))@test.com"
+            
+            registerView
+                .assertOnPage()
+                .enterEmail(randomEmail)
+                .enterPassword("jdshfljhsdkjfksdfkj")
+                .enterAge("20")
+                .tapRegisterButton()
+            
+            ProfilePage(app: app).assertOnPage()
+        }
+
+        func testValidationErrorForExistingUser() {
+            registerView
+                .assertOnPage()
+                .enterEmail("abogsysa@yandex.ru")
+                .enterPassword("12345678m")
+                .enterAge("26")
+                .tapRegisterButton()
+                .assertValidationError()
+        }
+
+        func testBackButtonNavigation() {
+            registerView
+                .assertOnPage()
+                .tapBackButton()
+            
+            LoginPage(app: app).assertOnPage()
+        }
+    }
+
